@@ -14,7 +14,8 @@ This project implements a **Smart Industrial HMI System** that:
 - Controls a fan through a relay based on sensor thresholds or manual button input.
 - Displays real-time system status on a touchscreen using a custom Qt GUI.
 - Uses a character device driver to interface kernel space and user space.
-
+  
+https://github.com/cu-ecen-aeld/final-project-Soha18/wiki/Project-Overview
 ---
 
 ## ✨ Features
