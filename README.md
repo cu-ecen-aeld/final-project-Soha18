@@ -31,7 +31,7 @@ https://github.com/cu-ecen-aeld/final-project-Soha18/wiki/Project-Overview
 
 | Component              | Interface | Purpose                  |
 |------------------------|-----------|---------------------------|
-| Raspberry Pi 4         | -         | Main controller           |
+| Raspberry Pi 3 B+      | -         | Main controller           |
 | DHT20/SHT31 Sensor     | I2C       | Humidity & Temp reading   |
 | Relay Module           | GPIO      | Fan control               |
 | Push Buttons (x2)      | GPIO      | Manual fan ON/OFF         |
