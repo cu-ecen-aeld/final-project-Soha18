@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# yocto-assignments-base
-Base repository for AESD Yocto assignments
-=======
+
 # final-project-Soha18
 
 # 🌡️ Smart Industrial Human-Machine Interface (HMI) System
