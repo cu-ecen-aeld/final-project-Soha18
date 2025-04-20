@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# yocto-assignments-base
-Base repository for AESD Yocto assignments
-=======
+
 # final-project-Soha18
 
 # 🌡️ Smart Industrial Human-Machine Interface (HMI) System
@@ -52,5 +49,6 @@ https://github.com/cu-ecen-aeld/final-project-Soha18/wiki/Project-Overview
 - **Character Device Driver**: User-Kernel communication
 
 ---
+## Final-Project-Assignment-Schedule-Page
 
->>>>>>> ff0971b344611444077986e32b5ceaaf95fe3e8a
+https://github.com/cu-ecen-aeld/final-project-Soha18/wiki/Final-Project-Assignment-Schedule-Page
