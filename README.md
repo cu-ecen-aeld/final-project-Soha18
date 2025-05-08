@@ -11,7 +11,7 @@
 
 This project implements a **Smart Industrial HMI System** that:
 
-- Reads temperature and humidity data from I2C sensors.
+- Reads temperature, pressure and humidity data from I2C sensors.
 - Controls a fan through a relay based on sensor thresholds or manual button input.
 - Displays real-time system status on a touchscreen using a custom Qt GUI.
 - Uses a character device driver to interface kernel space and user space.
@@ -21,7 +21,7 @@ https://github.com/cu-ecen-aeld/final-project-Soha18/wiki/Project-Overview
 
 ## ✨ Features
 
-- Real-time display of humidity pressure and temperature.
+- Real-time display of humidity, pressure and temperature.
 - Auto and manual fan control with safety logic.
 - Touchscreen GUI interface with sensor status.
 - Modular architecture with character device driver.
@@ -33,7 +33,7 @@ https://github.com/cu-ecen-aeld/final-project-Soha18/wiki/Project-Overview
 | Component              | Interface | Purpose                  |
 |------------------------|-----------|---------------------------|
 | Raspberry Pi 3 B+      | -         | Main controller           |
-| DHT20/SHT31 Sensor     | I2C       | Humidity & Temp reading   |
+| BME280 Sensor          | I2C       | Humidity & Temp reading   |
 | Relay Module           | GPIO      | Fan control               |
 | Push Buttons (x2)      | GPIO      | Manual fan ON/OFF         |
 | Cooling Fan            | -         | Controlled actuator       |
