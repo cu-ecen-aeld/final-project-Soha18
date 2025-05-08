@@ -37,7 +37,7 @@ https://github.com/cu-ecen-aeld/final-project-Soha18/wiki/Project-Overview
 | Relay Module           | GPIO      | Fan control               |
 | Push Buttons (x2)      | GPIO      | Manual fan ON/OFF         |
 | Cooling Fan            | -         | Controlled actuator       |
-| Touchscreen Display    | HDMI/GPIO | GUI interface             |
+| Touchscreen Display    | HDMI/SPI | GUI interface             |
 
 ---
 
