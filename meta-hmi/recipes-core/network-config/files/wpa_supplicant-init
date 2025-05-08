@@ -1,0 +1,30 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          wpa_supplicant
+# Required-Start:    $network
+# Required-Stop:
+# Default-Start:     S
+# Default-Stop:
+# Short-Description: Start wpa_supplicant at boot time
+### END INIT INFO
+
+case "$1" in
+  start)
+    echo "Starting wpa_supplicant for wlan0"
+    /sbin/wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/wpa_supplicant.conf
+    ;;
+  stop)
+    echo "Stopping wpa_supplicant"
+    killall wpa_supplicant
+    ;;
+  restart)
+    $0 stop
+    $0 start
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+esac
+
+exit 0
+
