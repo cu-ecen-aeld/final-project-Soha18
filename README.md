@@ -21,7 +21,7 @@ https://github.com/cu-ecen-aeld/final-project-Soha18/wiki/Project-Overview
 
 ## ✨ Features
 
-- Real-time display of humidity and temperature.
+- Real-time display of humidity pressure and temperature.
 - Auto and manual fan control with safety logic.
 - Touchscreen GUI interface with sensor status.
 - Modular architecture with character device driver.
