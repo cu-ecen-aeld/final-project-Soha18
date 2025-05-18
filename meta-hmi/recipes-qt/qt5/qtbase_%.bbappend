@@ -6,7 +6,7 @@ PACKAGECONFIG:append = " \
     tslib \
     sql-sqlite \
 "
-
+PACKAGECONFIG:append = " accessibility fontconfig "
 PACKAGECONFIG:remove = " \
     gl \
     tests \

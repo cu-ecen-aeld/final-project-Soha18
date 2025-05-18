@@ -13,6 +13,7 @@ case "$1" in
     echo "Starting guiapp"
     export QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt5/plugins
     export QT_QPA_PLATFORM=linuxfb
+    export QT_QPA_GENERIC_PLUGINS=tslib
     /usr/bin/guiapp &
     ;;
   stop)

@@ -50,5 +50,9 @@ IMAGE_INSTALL:append = " \
     ${MY_PKGS} \
     liberation-fonts \
     fontconfig \
+    tslib \
+    tslib-tests \
+    tslib-calibrate \
 "
+
 

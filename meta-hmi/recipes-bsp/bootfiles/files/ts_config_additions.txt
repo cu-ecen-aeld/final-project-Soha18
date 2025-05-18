@@ -1,0 +1,3 @@
+dtoverlay=ads7846-overlay
+dtparam=spi=on
+dtparam=i2c=on
