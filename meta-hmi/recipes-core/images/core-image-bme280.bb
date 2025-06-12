@@ -17,6 +17,7 @@ IMAGE_INSTALL += " \
     iw \
     openssh \
     network-config \
+    fan-control \
     qt-gui \
 "
 
@@ -53,6 +54,10 @@ IMAGE_INSTALL:append = " \
     tslib \
     tslib-tests \
     tslib-calibrate \
+    evtest \
+    libgpiod \
+    libgpiod-dev \
+    libgpiod-tools \
 "
 
 

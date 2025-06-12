@@ -3,24 +3,37 @@
 
 #include <QMainWindow>
 #include <QTimer>
-#include <QFile>
-#include <QTextStream>
-#include "ui_mainwindow.h"
+
+QT_BEGIN_NAMESPACE
+namespace Ui { class MainWindow; }
+QT_END_NAMESPACE
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
-    void readSensorValues();
+    void toggleFan();
+    void manualControlToggled(bool checked);
+    void adjustFanSpeed(int speed);
+    void updateUI();
 
 private:
     Ui::MainWindow *ui;
     QTimer *timer;
+    bool fanOn;
+    bool manualMode;
+    
+    // Helper functions
+    void initializeModeFiles();
+    void readSensorValues();
+    void updateFanStatusDisplay();
+    bool writeToFile(const QString &filepath, const QString &content);
+    QString readFromFile(const QString &filepath);
 };
 
 #endif // MAINWINDOW_H
-

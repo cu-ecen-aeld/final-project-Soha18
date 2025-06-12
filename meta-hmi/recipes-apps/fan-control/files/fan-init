@@ -1,0 +1,29 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          fan-daemon
+# Required-Start:    $remote_fs $syslog
+# Required-Stop:     $remote_fs $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Fan control daemon
+# Description:       Controls RPi fan based on temperature
+### END INIT INFO
+
+case "$1" in
+    start)
+        echo "Starting fan-daemon..."
+        /usr/bin/fan-daemon &
+        ;;
+    stop)
+        echo "Stopping fan-daemon..."
+        killall fan-daemon
+        ;;
+    restart)
+        $0 stop
+        $0 start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac

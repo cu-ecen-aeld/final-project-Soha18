@@ -5,11 +5,11 @@ PACKAGECONFIG:append = " \
     gles2 \
     tslib \
     sql-sqlite \
+    xcb \
 "
 PACKAGECONFIG:append = " accessibility fontconfig "
 PACKAGECONFIG:remove = " \
     gl \
     tests \
     examples \
-    x11 \
 "

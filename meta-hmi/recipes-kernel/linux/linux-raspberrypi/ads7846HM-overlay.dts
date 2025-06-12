@@ -1,0 +1,68 @@
+
+/dts-v1/;
+/plugin/;
+
+/ {
+	compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709";
+
+	fragment@0 {
+		target = <&spi0>;
+		__overlay__ {
+			status = "okay";
+
+			spidev@0 {
+				status = "disabled";
+			};
+
+			spidev@1 {
+				status = "disabled";
+			};
+		};
+	};
+
+	fragment@1 {
+		target = <&gpio>;
+		__overlay__ {
+			ads7846_pins: ads7846_pins {
+				brcm,pins = <25>;
+				brcm,function = <0>; /* in */
+			};
+		};
+	};
+
+	fragment@2 {
+		target = <&spi0>;
+		__overlay__ {
+			/* needed to avoid dtc warning */
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			ads7846_ts: ads7846-ts@1 {
+				compatible = "ti,ads7846";
+				reg = <1>;
+
+                                spi-max-frequency = <500000>;
+                                interrupts = <25 2>; /* high-to-low edge triggered */
+                                interrupt-parent = <&gpio>;
+                                pendown-gpio = <&gpio 25 1>;
+                                ti,x-plate-ohms = /bits/ 16 <60>;
+
+                                ti,pressure-min = /bits/ 16 <20>;
+                                ti,pressure-max = /bits/ 16 <255>;
+
+                                ti,debounce-max = /bits/ 16 <100>;
+
+                                ti,debounce-tol = /bits/ 16 <2>;
+                                ti,debounce-rep = /bits/ 16 <1>;
+                                ti,swap-xy;
+
+
+                                ti,settle-delay-usec = /bits/ 16 <20>;
+                                ti,penirq-recheck-delay-usecs = /bits/ 16 <20>;
+				
+								
+			};
+		};
+	};
+
+};

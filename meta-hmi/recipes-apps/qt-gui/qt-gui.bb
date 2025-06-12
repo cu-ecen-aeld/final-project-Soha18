@@ -12,9 +12,11 @@ SRC_URI = "file://CMakeLists.txt \
            file://mainwindow.cpp\
            file://guiapp.pro \
            file://guiapp.sh \
-           file://mainwindow.ui \
            file://ui_mainwindow.h \
+           file://mainwindow.ui \
+           file://fancontrol.h \
            "
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:${THISDIR}/../fan-control/files:"
 
 S = "${WORKDIR}/sources-unpack"
 
