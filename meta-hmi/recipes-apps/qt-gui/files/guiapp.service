@@ -1,0 +1,16 @@
+[Unit]
+Description=Qt GUI application
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/guiapp
+Environment=QT_QPA_PLATFORM_PLUGIN_PATH=/usr/lib/qt5/plugins
+Environment=QT_QPA_PLATFORM=linuxfb
+Environment=QT_QPA_GENERIC_PLUGINS=tslib
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+

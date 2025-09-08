@@ -1,0 +1,9 @@
+[Match]
+Name=wlan0
+KernelCommandLine=!nfsroot
+
+[Network]
+DHCP=yes
+
+[DHCPv4]
+UseHostname=false

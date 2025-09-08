@@ -3,10 +3,12 @@ DESCRIPTION = "A background daemon that controls a fan via GPIO based on tempera
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/MIT;md5=0835c8d1236dd3327762e34f91c03b53"
 
+FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
+
 SRC_URI = "file://fan-daemon.c \
            file://fancontrol.c \
            file://fancontrol.h \
-           file://fan-init"
+           file://fancontrol.service"
 
 DEPENDS += "libgpiod"
 RDEPENDS:${PN} = "libgpiod"
@@ -22,23 +24,17 @@ do_install() {
     install -d ${D}${bindir}
     install -m 0755 fan-daemon ${D}${bindir}
 
-    # Install init script for sysvinit 
-    install -d ${D}${sysconfdir}/init.d
-    install -m 0755 ${S}/fan-init ${D}${sysconfdir}/init.d/fan-daemon
-    
-    # Create symlink for service management (optional but recommended)
-    install -d ${D}${sysconfdir}/rc5.d
-    ln -sf ../init.d/fan-daemon ${D}${sysconfdir}/rc5.d/S99fan-daemon
+# Install systemd service
+    install -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${S}/fancontrol.service ${D}${systemd_unitdir}/system/
 }
 
+FILES:${PN} += "${systemd_unitdir}/system"
+
+
 # Package files
-FILES:${PN} = "${bindir}/fan-daemon \
-               ${sysconfdir}/init.d/fan-daemon \
-               ${sysconfdir}/rc5.d/S99fan-daemon"
+inherit systemd
 
-# Inherit update-rc.d to properly handle sysvinit integration
-inherit update-rc.d
+SYSTEMD_SERVICE:${PN} = "fancontrol.service"
+SYSTEMD_AUTO_ENABLE = "enable"
 
-# Configure the init script
-INITSCRIPT_NAME = "fan-daemon"
-INITSCRIPT_PARAMS = "defaults 99"

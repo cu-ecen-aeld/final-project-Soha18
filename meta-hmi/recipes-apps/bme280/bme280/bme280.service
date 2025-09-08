@@ -1,0 +1,19 @@
+[Unit]
+Description=BME280 Sensor Data Logger
+Documentation=man:bme280-sensor(1)
+After=multi-user.target
+Wants=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/bme280
+Restart=always
+RestartSec=5
+
+
+# Environment variables if needed
+Environment="LOG_LEVEL=INFO"
+Environment="SENSOR_INTERVAL=5"
+
+[Install]
+WantedBy=multi-user.target

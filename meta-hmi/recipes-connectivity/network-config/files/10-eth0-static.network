@@ -1,0 +1,13 @@
+[Match]
+Name=eth0
+Type=ether
+
+[Network]
+# Static IP configuration for easy host access
+Address=192.168.178.120/24
+
+#DNS=192.168.1.1
+LinkLocalAddressing=no
+
+DHCP=no
+

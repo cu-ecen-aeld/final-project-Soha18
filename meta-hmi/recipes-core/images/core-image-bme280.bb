@@ -5,23 +5,26 @@ inherit core-image
 #inherit linux-raspberrypi-base
 
 # Install core apps and services
-IMAGE_INSTALL += " \
+IMAGE_INSTALL:append= " \
     bme280 \
     linux-firmware-bcm43430 \
+    linux-firmware-rpidistro-bcm43455 \
     bluez5 \
     i2c-tools \
     bridge-utils \
     hostapd \
     iptables \
+    systemd-networkd \
     wpa-supplicant \
     iw \
     openssh \
-    network-config \
     fan-control \
     qt-gui \
+    network-config \
 "
 
-DISTRO_FEATURES:append = " wifi  "
+DISTRO_FEATURES:append = " wifi"
+DISTRO_FEATURES:remove = "connman"
 
 MY_TOOLS = " \
     qtbase \
@@ -39,10 +42,8 @@ MY_PKGS = " \
     qtquickcontrols2-mkspecs \
     qtdeclarative \
     qtdeclarative-dev \
-    qtdeclarative-mkspecs \
-    qtgraphicaleffects \
-    qtgraphicaleffects-dev \
-    "
+  "
+    
 MY_FEATURES = " \
     python-smbus \
 "
@@ -58,6 +59,9 @@ IMAGE_INSTALL:append = " \
     libgpiod \
     libgpiod-dev \
     libgpiod-tools \
+    mosquitto \
+    mosquitto-clients \
+    dhcpcd \
 "
-
-
+IMAGE_INSTALL:remove = "initscripts"
+#IMAGE_INSTALL:append = " systemd-resolved"

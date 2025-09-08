@@ -18,7 +18,7 @@ SRC_URI = "file://bme280.c \
            file://compensation.c \
            file://compensation.h \
            file://Makefile \
-           file://pme280"
+           file://bme280.service"
 
 S = "${WORKDIR}/sources-unpack"
 DEPENDS += "i2c-tools"
@@ -26,11 +26,11 @@ DEPENDS += "i2c-tools"
 # recipe automatically - you will need to examine the Makefile yourself and ensure
 # that the appropriate arguments are passed in.
 
-inherit update-rc.d
-INITSCRIPT_NAME = "pme280"
-INITSCRIPT_PACKAGES = "${PN}"
+inherit systemd
+SYSTEMD_SERVICE:${PN} = "bme280.service"
+SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
-FILES:${PN} += "${sysconfdir}/*"
+FILES:${PN} += "${systemd_unitdir}/system/bme280.service"
 EXTRA_OEMAKE = "CFLAGS='${CFLAGS}' LDFLAGS='${LDFLAGS}'"
 #TARGET_LDFLAGS += "-Wl, --hash-style=gnu"
 
@@ -47,7 +47,7 @@ do_install() {
     install -d ${D}${bindir}
     install -m 0755 ${S}/bme280 ${D}${bindir}
 
-    install -d ${D}${sysconfdir}/init.d
-    install -m 0755 ${S}/pme280 ${D}${sysconfdir}/init.d/
+    install -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${S}/bme280.service ${D}${systemd_unitdir}/system/
 }
 

@@ -1,0 +1,12 @@
+[Unit]
+Description=Fan control daemon
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/fancontrol
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

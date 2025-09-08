@@ -11,7 +11,7 @@ SRC_URI = "file://CMakeLists.txt \
            file://mainwindow.h \
            file://mainwindow.cpp\
            file://guiapp.pro \
-           file://guiapp.sh \
+           file://guiapp.service \
            file://ui_mainwindow.h \
            file://mainwindow.ui \
            file://fancontrol.h \
@@ -20,7 +20,10 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/files:${THISDIR}/../fan-control/files:"
 
 S = "${WORKDIR}/sources-unpack"
 
-inherit qmake5 update-rc.d
+inherit qmake5 systemd
+
+SYSTEMD_SERVICE:${PN} = "guiapp.service"
+SYSTEMD_AUTO_ENABLE = "enable"
 
 do_compile() {
     qmake ${S}/guiapp.pro
@@ -31,10 +34,8 @@ do_install() {
     install -d ${D}${bindir}
     install -m 0755 ${B}/guiapp ${D}${bindir}/guiapp
 
-    install -d ${D}${sysconfdir}/init.d
-    install -m 0755 ${S}/guiapp.sh ${D}${sysconfdir}/init.d/guiapp
+    install -d ${D}${systemd_unitdir}/system
+    install -m 0644 ${S}/guiapp.service ${D}${systemd_unitdir}/system/
 }
 
-FILES:${PN} += "${sysconfdir}/*"
-INITSCRIPT_NAME = "guiapp"
-INITSCRIPT_PACKAGES = "${PN}"
+

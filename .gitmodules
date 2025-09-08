@@ -7,3 +7,6 @@
 [submodule "poky"]
 	path = poky
 	url = git://git.yoctoproject.org/poky
+[submodule "assignment-autotest"]
+	path = assignment-autotest
+	url = https://github.com/cu-ecen-aeld/assignment-autotest.git
